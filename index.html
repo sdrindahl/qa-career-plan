@@ -397,6 +397,52 @@
   body.neon-theme .section-header {
     text-shadow: 0 0 10px var(--primary);
   }
+
+  /* COLLAPSIBLE SECTIONS */
+  .collapsible-header {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+    transition: all 0.2s;
+  }
+
+  .collapsible-header:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--primary);
+  }
+
+  .collapsible-header i {
+    transition: transform 0.3s;
+  }
+
+  .collapsible-header.active i {
+    transform: rotate(90deg);
+  }
+
+  .collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .collapsible-content.active {
+    max-height: 1000px;
+    transition: max-height 0.3s ease-in;
+  }
+
+  .collapsible-inner {
+    padding: 20px;
+    background: rgba(37, 99, 235, 0.03);
+    border-left: 4px solid var(--primary);
+    margin-bottom: 15px;
+  }
 </style>
 </head>
 
@@ -433,7 +479,7 @@
   <ul class="sidebar-content">
     <li class="sidebar-item">
       <a class="sidebar-link active" onclick="showPage('main', event)">
-        <i class="fas fa-home"></i> Overview
+        <i class="fas fa-home"></i> AI-QA Career Objectives/Plan
       </a>
     </li>
     <li class="sidebar-item">
@@ -479,7 +525,7 @@
     <div id="page-main" class="page-content">
       <div class="hero">
         <h1><i class="fas fa-brain"></i> AI‑Assisted QA Career Plan</h1>
-        <p>Your roadmap to leveling up without becoming a full-time coder</p>
+        <p>Roadmap to Leveling UP</p>
       </div>
 
       <!-- SHORT ANSWER -->
@@ -489,33 +535,7 @@
         Position yourself as an <strong>AI‑assisted QA Automation Engineer</strong>.
       </div>
 
-      <!-- SECTION 1 -->
-      <h2 class="section-header"><i class="fas fa-user-check"></i> Where You Actually Stand</h2>
-      <div class="card">
-        <h3><i class="fas fa-star"></i> Your Current Strengths</h3>
-        <ul>
-          <li><i class="fas fa-check-circle"></i> You use AI effectively</li>
-          <li><i class="fas fa-check-circle"></i> You struggle with syntax (normal now)</li>
-          <li><i class="fas fa-check-circle"></i> You have QA + automation exposure</li>
-        </ul>
-        <p>
-          This is exactly what companies want:  
-          <strong>AI‑assisted engineers, not syntax robots.</strong>
-        </p>
-      </div>
-
-      <div class="card">
-        <h3><i class="fas fa-lightbulb"></i> Mindset Shift</h3>
-        <p>Your value is in:</p>
-        <ul>
-          <li><i class="fas fa-check-circle"></i> Knowing what to test</li>
-          <li><i class="fas fa-check-circle"></i> Understanding how systems break</li>
-          <li><i class="fas fa-check-circle"></i> Designing smart test scenarios</li>
-          <li><i class="fas fa-check-circle"></i> Using AI to automate faster</li>
-        </ul>
-      </div>
-
-      <!-- SECTION 2 -->
+      <!-- SECTION 2: What You Should NOT Do -->
       <h2 class="section-header"><i class="fas fa-ban"></i> What You Should NOT Do</h2>
       <div class="warning">
         <ul>
@@ -526,7 +546,7 @@
         </ul>
       </div>
 
-      <!-- SECTION 3 -->
+      <!-- SECTION 3: What You SHOULD Focus On -->
       <h2 class="section-header"><i class="fas fa-bullseye"></i> What You SHOULD Focus On</h2>
 
       <div class="card">
@@ -554,7 +574,7 @@
         </ul>
       </div>
 
-      <!-- SECTION 4 -->
+      <!-- SECTION 4: Recommended Courses -->
       <h2 class="section-header"><i class="fas fa-graduation-cap"></i> Recommended Courses</h2>
 
       <div class="card">
@@ -575,11 +595,44 @@
         </ul>
       </div>
 
-      <!-- SECTION 5 -->
+      <!-- SECTION 5: What Helps Your Job Search -->
       <h2 class="section-header"><i class="fas fa-search"></i> What Helps Your Job Search the Most</h2>
       <div class="highlight">
         <strong><i class="fas fa-star"></i> The #1 thing that gets interviews:</strong>  
         <strong>2–3 small AI + QA projects.</strong>
+      </div>
+
+      <!-- COLLAPSIBLE SECTIONS -->
+      <h2 class="section-header"><i class="fas fa-chevron-down"></i> More Information</h2>
+
+      <div class="collapsible-header" onclick="toggleCollapsible(this)">
+        <i class="fas fa-chevron-right"></i>
+        <span><i class="fas fa-user-check"></i> Where You Actually Stand</span>
+      </div>
+      <div class="collapsible-content">
+        <div class="collapsible-inner">
+          <h3><i class="fas fa-star"></i> Your Current Strengths</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> You use AI effectively</li>
+            <li><i class="fas fa-check-circle"></i> You struggle with syntax (normal now)</li>
+            <li><i class="fas fa-check-circle"></i> You have QA + automation exposure</li>
+          </ul>
+          <p>
+            This is exactly what companies want:  
+            <strong>AI‑assisted engineers, not syntax robots.</strong>
+          </p>
+        </div>
+
+        <div class="collapsible-inner">
+          <h3><i class="fas fa-lightbulb"></i> Mindset Shift</h3>
+          <p>Your value is in:</p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Knowing what to test</li>
+            <li><i class="fas fa-check-circle"></i> Understanding how systems break</li>
+            <li><i class="fas fa-check-circle"></i> Designing smart test scenarios</li>
+            <li><i class="fas fa-check-circle"></i> Using AI to automate faster</li>
+          </ul>
+        </div>
       </div>
 
       <footer>
@@ -796,6 +849,13 @@
       document.getElementById('sidebar').classList.remove('active');
     }
   });
+
+  // COLLAPSIBLE TOGGLE
+  function toggleCollapsible(header) {
+    header.classList.toggle('active');
+    const content = header.nextElementSibling;
+    content.classList.toggle('active');
+  }
 </script>
 
 </body>
