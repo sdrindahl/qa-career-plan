@@ -189,6 +189,27 @@
   body.neon-theme .timeline-item {
     border: 2px solid var(--primary);
   }
+
+  .warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 6px solid #f59e0b;
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin: 25px 0;
+  }
+
+  .warning ul { margin: 15px 0 0 20px; }
+  .warning li { margin: 10px 0; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    font-size: 1.6rem;
+    border-left: 6px solid var(--primary);
+    padding-left: 12px;
+  }
 </style>
 </head>
 <body>
@@ -266,6 +287,16 @@
         <li><i class="fas fa-check"></i> Continue learning AI advancements</li>
       </ul>
     </div>
+  </div>
+
+  <h2 class="section-header"><i class="fas fa-ban"></i> What You Should NOT Do</h2>
+  <div class="warning">
+    <ul>
+      <li><i class="fas fa-times-circle"></i> Do NOT try to become a full software engineer</li>
+      <li><i class="fas fa-times-circle"></i> Do NOT memorize syntax</li>
+      <li><i class="fas fa-times-circle"></i> Do NOT take a heavy coding bootcamp</li>
+      <li><i class="fas fa-times-circle"></i> Do NOT abandon QA</li>
+    </ul>
   </div>
 
   <footer>
