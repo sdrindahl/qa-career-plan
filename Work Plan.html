@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI-Assisted QA Career Plan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* CSS VARIABLES FOR THEMES */
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --bg-primary: #f3f4f6;
+    --bg-secondary: white;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --card-shadow: rgba(0,0,0,0.06);
+    --accent-success: #10b981;
+    --accent-warning: #f59e0b;
+    --accent-info: #4f46e5;
+  }
+
+  body.dark-theme {
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --border: #444;
+    --card-shadow: rgba(0,0,0,0.3);
+    --accent-success: #34d399;
+    --accent-warning: #fbbf24;
+    --accent-info: #818cf8;
+  }
+
+  body.neon-theme {
+    --primary: #00d9ff;
+    --primary-dark: #00a8cc;
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --text-primary: #00ff88;
+    --text-secondary: #00d9ff;
+    --border: #00ff88;
+    --card-shadow: rgba(0, 255, 136, 0.1);
+    --accent-success: #00ff88;
+    --accent-warning: #ffaa00;
+    --accent-info: #ff006e;
+  }
+
+  body.minimalist-theme {
+    --primary: #000;
+    --primary-dark: #000;
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --text-primary: #000;
+    --text-secondary: #666;
+    --border: #ddd;
+    --card-shadow: rgba(0,0,0,0.02);
+    --accent-success: #000;
+    --accent-warning: #000;
+    --accent-info: #000;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* STICKY NAVBAR */
+  .navbar {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px var(--card-shadow);
+  }
+
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .navbar-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .theme-controls {
+    display: flex;
+    gap: 10px;
+  }
+
+  .theme-btn {
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .theme-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  .theme-btn.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary);
+  }
+
+  /* SIDEBAR NAVIGATION */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background: var(--bg-secondary);
+    border-right: 2px solid var(--border);
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .sidebar-content {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-item {
+    margin: 12px 0;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .sidebar-link:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  .sidebar-link.active {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+  }
+
+  .sidebar-link i {
+    width: 24px;
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    margin-left: 250px;
+    padding: 40px 30px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* HERO HEADER */
+  .hero {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 60px 30px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+
+  .hero p {
+    margin-top: 12px;
+    font-size: 1.15rem;
+    opacity: 0.9;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    font-size: 1.6rem;
+    border-left: 6px solid var(--primary);
+    padding-left: 12px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    border: 1px solid var(--border);
+  }
+
+  .card h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card h3 i {
+    color: var(--primary);
+  }
+
+  /* HIGHLIGHT BOXES */
+  .highlight {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 6px solid var(--accent-success);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  .warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 6px solid var(--accent-warning);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  /* LISTS */
+  ul {
+    margin: 10px 0 10px 20px;
+  }
+
+  li {
+    margin: 8px 0;
+  }
+
+  /* ROADMAP */
+  .roadmap-step {
+    background: rgba(79, 70, 229, 0.08);
+    border-left: 6px solid var(--accent-info);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  .roadmap-step h4 {
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    margin-right: 6px;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 768px) {
+    .navbar-content {
+      gap: 10px;
+    }
+
+    .navbar-title {
+      font-size: 1rem;
+    }
+
+    .theme-controls {
+      gap: 5px;
+    }
+
+    .theme-btn {
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .sidebar {
+      transform: translateX(-100%);
+      width: 200px;
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    main {
+      margin-left: 0;
+      padding: 20px 15px;
+    }
+
+    .hero {
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .section-header {
+      font-size: 1.3rem;
+    }
+
+    .card {
+      padding: 16px 20px;
+      margin: 15px 0;
+    }
+
+    .theme-btn {
+      display: none;
+    }
+
+    .theme-btn.mobile-visible {
+      display: inline-block;
+    }
+  }
+
+  /* NEON THEME SPECIAL */
+  body.neon-theme .card {
+    border: 2px solid var(--primary);
+  }
+
+  body.neon-theme .section-header {
+    text-shadow: 0 0 10px var(--primary);
+  }
+</style>
+</head>
+
+<body>
+
+<!-- STICKY NAVBAR -->
+<div class="navbar">
+  <button class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="navbar-content">
+    <div class="navbar-title">
+      <i class="fas fa-chart-line"></i> QA Career Plan
+    </div>
+  </div>
+  <div class="theme-controls">
+    <button class="theme-btn active" onclick="setTheme('light')">
+      <i class="fas fa-sun"></i>
+    </button>
+    <button class="theme-btn" onclick="setTheme('dark')">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="theme-btn" onclick="setTheme('neon')">
+      <i class="fas fa-flash"></i>
+    </button>
+    <button class="theme-btn" onclick="setTheme('minimalist')">
+      <i class="fas fa-minimize"></i>
+    </button>
+  </div>
+</div>
+
+<!-- SIDEBAR NAVIGATION -->
+<aside class="sidebar" id="sidebar">
+  <ul class="sidebar-content">
+    <li class="sidebar-item">
+      <a class="sidebar-link active" onclick="showPage('main', event)">
+        <i class="fas fa-home"></i> Overview
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a class="sidebar-link" onclick="showPage('roadmap', event)">
+        <i class="fas fa-road"></i> Roadmap
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a class="sidebar-link" onclick="showPage('projects', event)">
+        <i class="fas fa-code"></i> Projects
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a class="sidebar-link" onclick="showPage('resources', event)">
+        <i class="fas fa-book"></i> Resources
+      </a>
+    </li>
+  </ul>
+  <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border);">
+    <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><i class="fas fa-palette"></i> Themes:</p>
+    <div class="theme-controls" style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 10px;">
+      <button class="theme-btn active" onclick="setTheme('light')" style="justify-content: center;">
+        <i class="fas fa-sun"></i> Light
+      </button>
+      <button class="theme-btn" onclick="setTheme('dark')" style="justify-content: center;">
+        <i class="fas fa-moon"></i> Dark
+      </button>
+      <button class="theme-btn" onclick="setTheme('neon')" style="justify-content: center;">
+        <i class="fas fa-flash"></i> Neon
+      </button>
+      <button class="theme-btn" onclick="setTheme('minimalist')" style="justify-content: center;">
+        <i class="fas fa-minimize"></i> Min
+      </button>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+  <main id="main-content">
+
+    <!-- PAGE: MAIN OVERVIEW -->
+    <div id="page-main" class="page-content">
+      <div class="hero">
+        <h1><i class="fas fa-brain"></i> AI‑Assisted QA Career Plan</h1>
+        <p>Your roadmap to leveling up without becoming a full-time coder</p>
+      </div>
+
+      <!-- SHORT ANSWER -->
+      <div class="highlight">
+        <strong><i class="fas fa-lightbulb"></i> Quick Path:</strong>  
+        Stay in QA → Learn light JavaScript → Learn AI fundamentals → Build 2–3 AI + QA projects →  
+        Position yourself as an <strong>AI‑assisted QA Automation Engineer</strong>.
+      </div>
+
+      <!-- SECTION 1 -->
+      <h2 class="section-header"><i class="fas fa-user-check"></i> Where You Actually Stand</h2>
+      <div class="card">
+        <h3><i class="fas fa-star"></i> Your Current Strengths</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> You use AI effectively</li>
+          <li><i class="fas fa-check-circle"></i> You struggle with syntax (normal now)</li>
+          <li><i class="fas fa-check-circle"></i> You have QA + automation exposure</li>
+        </ul>
+        <p>
+          This is exactly what companies want:  
+          <strong>AI‑assisted engineers, not syntax robots.</strong>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-lightbulb"></i> Mindset Shift</h3>
+        <p>Your value is in:</p>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Knowing what to test</li>
+          <li><i class="fas fa-check-circle"></i> Understanding how systems break</li>
+          <li><i class="fas fa-check-circle"></i> Designing smart test scenarios</li>
+          <li><i class="fas fa-check-circle"></i> Using AI to automate faster</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 2 -->
+      <h2 class="section-header"><i class="fas fa-ban"></i> What You Should NOT Do</h2>
+      <div class="warning">
+        <ul>
+          <li><i class="fas fa-times-circle"></i> Do NOT try to become a full software engineer</li>
+          <li><i class="fas fa-times-circle"></i> Do NOT memorize syntax</li>
+          <li><i class="fas fa-times-circle"></i> Do NOT take a heavy coding bootcamp</li>
+          <li><i class="fas fa-times-circle"></i> Do NOT abandon QA</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 3 -->
+      <h2 class="section-header"><i class="fas fa-bullseye"></i> What You SHOULD Focus On</h2>
+
+      <div class="card">
+        <h3><i class="fas fa-brain"></i> Focus on Logic, Not Syntax</h3>
+        <p>AI writes code. You guide the logic.</p>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-rocket"></i> AI + QA Skills (Your Edge)</h3>
+        <ul>
+          <li><i class="fas fa-arrow-right"></i> AI‑generated test cases</li>
+          <li><i class="fas fa-arrow-right"></i> AI‑powered failure analysis</li>
+          <li><i class="fas fa-arrow-right"></i> AI‑generated test data</li>
+          <li><i class="fas fa-arrow-right"></i> AI‑assisted Playwright/Cypress scripts</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-code"></i> Light Coding Upgrade</h3>
+        <p>Learn just enough JavaScript to:</p>
+        <ul>
+          <li><i class="fas fa-book"></i> Read AI‑generated code</li>
+          <li><i class="fas fa-book"></i> Edit functions and conditions</li>
+          <li><i class="fas fa-book"></i> Understand loops and objects</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 4 -->
+      <h2 class="section-header"><i class="fas fa-graduation-cap"></i> Recommended Courses</h2>
+
+      <div class="card">
+        <h3><i class="fas fa-book-open"></i> AI Fundamentals</h3>
+        <span class="tag"><i class="fas fa-flag"></i> Beginner Friendly</span>
+        <ul>
+          <li><i class="fas fa-external-link-alt"></i> Andrew Ng — <strong>AI for Everyone</strong></li>
+          <li><i class="fas fa-external-link-alt"></i> Any "AI for Developers / AI Users" course</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-code"></i> JavaScript for Testers</h3>
+        <span class="tag"><i class="fas fa-target"></i> Targeted Learning</span>
+        <ul>
+          <li><i class="fas fa-external-link-alt"></i> JavaScript for Testers</li>
+          <li><i class="fas fa-external-link-alt"></i> Cypress/Playwright with JS Fundamentals</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 5 -->
+      <h2 class="section-header"><i class="fas fa-search"></i> What Helps Your Job Search the Most</h2>
+      <div class="highlight">
+        <strong><i class="fas fa-star"></i> The #1 thing that gets interviews:</strong>  
+        <strong>2–3 small AI + QA projects.</strong>
+      </div>
+
+      <footer>
+        <p><i class="fas fa-info-circle"></i> Save this file and open it in your browser • Last updated: April 2026</p>
+      </footer>
+    </div>
+
+    <!-- PAGE: ROADMAP -->
+    <div id="page-roadmap" class="page-content" style="display:none;">
+      <div class="hero">
+        <h1><i class="fas fa-road"></i> 60–90 Day Roadmap</h1>
+        <p>A structured approach to landing your AI-assisted QA role</p>
+      </div>
+
+      <div class="roadmap-step">
+        <h4><i class="fas fa-calendar"></i> Weeks 1–2: Foundation</h4>
+        <ul>
+          <li><i class="fas fa-check"></i> AI fundamentals course (10-15 hours)</li>
+          <li><i class="fas fa-check"></i> JavaScript basics (variables, loops, functions)</li>
+          <li><i class="fas fa-check"></i> Set up GitHub account & learn git basics</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-step">
+        <h4><i class="fas fa-code-branch"></i> Weeks 3–6: First AI + QA Project</h4>
+        <ul>
+          <li><i class="fas fa-check"></i> Pick one project idea</li>
+          <li><i class="fas fa-check"></i> Use AI heavily in development</li>
+          <li><i class="fas fa-check"></i> Build & test thoroughly</li>
+          <li><i class="fas fa-check"></i> Publish to GitHub with README</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-step">
+        <h4><i class="fas fa-briefcase"></i> Weeks 6–10: Second Project + Job Search</h4>
+        <ul>
+          <li><i class="fas fa-check"></i> Build second project (different domain)</li>
+          <li><i class="fas fa-check"></i> Update resume with AI + QA focus</li>
+          <li><i class="fas fa-check"></i> Refresh LinkedIn profile</li>
+          <li><i class="fas fa-check"></i> Apply for "AI-assisted QA" roles</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-step">
+        <h4><i class="fas fa-star"></i> Week 10+: Career Direction</h4>
+        <ul>
+          <li><i class="fas fa-check"></i> <strong>QA Automation Engineer (AI‑assisted)</strong></li>
+          <li><i class="fas fa-check"></i> <strong>SDET with AI workflows</strong></li>
+          <li><i class="fas fa-check"></i> <strong>AI‑assisted QA Engineer</strong></li>
+          <li><i class="fas fa-check"></i> Build optional 3rd project for competitive edge</li>
+        </ul>
+      </div>
+
+      <footer>
+        <p><i class="fas fa-lightbulb"></i> Tip: Keep your GitHub active, update your profile weekly</p>
+      </footer>
+    </div>
+
+    <!-- PAGE: PROJECT IDEAS -->
+    <div id="page-projects" class="page-content" style="display:none;">
+      <div class="hero">
+        <h1><i class="fas fa-code"></i> Project Ideas for Your Portfolio</h1>
+        <p>Build real AI + QA projects that showcase your skills</p>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-sparkles"></i> AI‑generated Test Case Generator</h3>
+        <p>Input: User stories or requirements<br>Output: Comprehensive test cases via AI</p>
+        <span class="tag"><i class="fas fa-zap"></i> Beginner</span>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-robot"></i> AI‑Powered Test Failure Analyzer</h3>
+        <p>Paste test logs → AI analyzes and recommends fixes</p>
+        <span class="tag"><i class="fas fa-chart-line"></i> Intermediate</span>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-automation"></i> AI‑Assisted Playwright/Cypress Suite</h3>
+        <p>Use AI to generate and maintain end-to-end test scripts</p>
+        <span class="tag"><i class="fas fa-cogs"></i> Intermediate</span>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-database"></i> AI‑Generated Test Data Tool</h3>
+        <p>Generate realistic test data using AI based on data schemas</p>
+        <span class="tag"><i class="fas fa-database"></i> Beginner-Intermediate</span>
+      </div>
+
+      <footer>
+        <p><i class="fas fa-rocket"></i> Pro Tip: Start with the easiest, ship it fast, then tackle the next one!</p>
+      </footer>
+    </div>
+
+    <!-- PAGE: RESOURCES -->
+    <div id="page-resources" class="page-content" style="display:none;">
+      <div class="hero">
+        <h1><i class="fas fa-book"></i> Learning Resources</h1>
+        <p>Curated courses, tools, and communities to accelerate your learning</p>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-graduation-cap"></i> AI Fundamentals</h3>
+        <ul>
+          <li><strong>AI for Everyone</strong> by Andrew Ng (Coursera)</li>
+          <li><strong>Prompt Engineering for Developers</strong> by DeepLearning.AI</li>
+          <li><strong>ChatGPT Mastery</strong> for practical AI usage</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-code"></i> JavaScript & Testing Frameworks</h3>
+        <ul>
+          <li><strong>JavaScript Basics</strong> (freeCodeCamp or MDN Docs)</li>
+          <li><strong>Cypress Documentation</strong> (Official)</li>
+          <li><strong>Playwright Documentation</strong> (Official)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-tools"></i> Useful Tools & Platforms</h3>
+        <ul>
+          <li><strong>GitHub</strong> - Version control & portfolio</li>
+          <li><strong>ChatGPT/Claude</strong> - AI pair programming</li>
+          <li><strong>VS Code</strong> - Code editor with AI extensions</li>
+          <li><strong>Postman</strong> - API testing</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-community"></i> Communities & Networking</h3>
+        <ul>
+          <li>QA & Testing LinkedIn groups</li>
+          <li>AI communities (r/MachineLearning, AI Discord servers)</li>
+          <li>GitHub discussions & project communities</li>
+        </ul>
+      </div>
+
+      <footer>
+        <p><i class="fas fa-bookmark"></i> Bookmark this page and return when you need fresh resources!</p>
+      </footer>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // THEME SWITCHING
+  function setTheme(theme) {
+    document.body.classList.remove('dark-theme', 'neon-theme', 'minimalist-theme');
+    if (theme !== 'light') {
+      document.body.classList.add(theme + '-theme');
+    }
+    localStorage.setItem('theme', theme);
+    updateThemeButtons(theme);
+  }
+
+  function updateThemeButtons(activeTheme) {
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      if ((activeTheme === 'light' && btn.innerHTML.includes('sun')) ||
+          (activeTheme === 'dark' && btn.innerHTML.includes('moon')) ||
+          (activeTheme === 'neon' && btn.innerHTML.includes('flash')) ||
+          (activeTheme === 'minimalist' && btn.innerHTML.includes('minimize'))) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  // SIDEBAR TOGGLE
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+  }
+
+  // CLOSE SIDEBAR ON LINK CLICK (MOBILE)
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active');
+      }
+    });
+  });
+
+  // PAGE NAVIGATION
+  function showPage(pageId, event) {
+    event.preventDefault();
+    // Hide all pages
+    document.querySelectorAll('.page-content').forEach(page => {
+      page.style.display = 'none';
+    });
+    
+    // Show selected page
+    document.getElementById('page-' + pageId).style.display = 'block';
+    
+    // Update active link
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.classList.remove('active');
+    });
+    event.target.closest('.sidebar-link').classList.add('active');
+  }
+
+  // LOAD SAVED THEME
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+  });
+
+  // HANDLE WINDOW RESIZE
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      document.getElementById('sidebar').classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>

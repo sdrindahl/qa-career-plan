@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Learning Resources | QA Career Plan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --bg-primary: #f3f4f6;
+    --bg-secondary: white;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --card-shadow: rgba(0,0,0,0.06);
+  }
+
+  body.dark-theme {
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --border: #444;
+    --card-shadow: rgba(0,0,0,0.3);
+  }
+
+  body.neon-theme {
+    --primary: #00d9ff;
+    --primary-dark: #00a8cc;
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --text-primary: #00ff88;
+    --text-secondary: #00d9ff;
+    --border: #00ff88;
+    --card-shadow: rgba(0, 255, 136, 0.1);
+  }
+
+  body.minimalist-theme {
+    --primary: #000;
+    --primary-dark: #000;
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --text-primary: #000;
+    --text-secondary: #666;
+    --border: #ddd;
+    --card-shadow: rgba(0,0,0,0.02);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .navbar {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px var(--card-shadow);
+  }
+
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .navbar-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--primary); }
+
+  .theme-controls { display: flex; gap: 10px; }
+
+  .theme-btn {
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .theme-btn:hover { background: var(--primary); color: white; }
+  .theme-btn.active { background: var(--primary); color: white; }
+
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 60px 30px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+
+  .hero h1 { margin: 0; font-size: 2.4rem; font-weight: 700; }
+  .hero p { margin-top: 12px; font-size: 1.15rem; opacity: 0.9; }
+
+  .resource-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px var(--card-shadow);
+  }
+
+  .resource-card h3 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .resource-card h3 i {
+    color: var(--primary);
+  }
+
+  .resource-item {
+    margin: 12px 0;
+    padding-left: 25px;
+    position: relative;
+  }
+
+  .resource-item:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .resource-item a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .resource-item a:hover {
+    text-decoration: underline;
+  }
+
+  .resource-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 5px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    border-left: 6px solid var(--primary);
+    padding-left: 12px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .tip-box {
+    background: rgba(37, 99, 235, 0.1);
+    border-left: 6px solid var(--primary);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  @media (max-width: 768px) {
+    nav { display: none; }
+    main { padding: 0 15px; }
+    .hero { padding: 40px 20px; font-size: 1.8rem; }
+  }
+
+  body.neon-theme .resource-card {
+    border: 2px solid var(--primary);
+  }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="navbar-content">
+    <a href="Work Plan.html" class="navbar-title">
+      <i class="fas fa-chart-line"></i> QA Career Plan
+    </a>
+    <nav>
+      <a href="Work Plan.html"><i class="fas fa-home"></i> Overview</a>
+      <a href="roadmap.html"><i class="fas fa-road"></i> Roadmap</a>
+      <a href="projects.html"><i class="fas fa-code"></i> Projects</a>
+      <a href="resources.html"><i class="fas fa-book"></i> Resources</a>
+    </nav>
+  </div>
+  <div class="theme-controls">
+    <button class="theme-btn active" onclick="setTheme('light')"><i class="fas fa-sun"></i></button>
+    <button class="theme-btn" onclick="setTheme('dark')"><i class="fas fa-moon"></i></button>
+    <button class="theme-btn" onclick="setTheme('neon')"><i class="fas fa-flash"></i></button>
+    <button class="theme-btn" onclick="setTheme('minimalist')"><i class="fas fa-minimize"></i></button>
+  </div>
+</div>
+
+<main>
+  <div class="hero">
+    <h1><i class="fas fa-book"></i> Learning Resources & Tools</h1>
+    <p>Everything you need to accelerate your AI + QA journey</p>
+  </div>
+
+  <h2 class="section-title"><i class="fas fa-graduation-cap"></i> AI Fundamentals</h2>
+  <div class="resource-card">
+    <h3><i class="fas fa-book-open"></i> Recommended Courses</h3>
+    <div class="resource-item">
+      <strong>AI for Everyone</strong> by Andrew Ng (Coursera)
+      <div class="resource-description">Perfect starter course for non-technical understanding of AI. ~4 weeks of content.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Prompt Engineering for Developers</strong> by DeepLearning.AI
+      <div class="resource-description">Learn to craft better AI prompts. Practical and immediately applicable.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Introduction to AI</strong> by IBM (Coursera/EdX)
+      <div class="resource-description">Broader AI overview with real-world applications.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title"><i class="fas fa-code"></i> JavaScript & Testing Frameworks</h2>
+  <div class="resource-card">
+    <h3><i class="fas fa-code"></i> Programming & Testing</h3>
+    <div class="resource-item">
+      <strong>JavaScript Basics</strong> - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">MDN Web Docs</a>
+      <div class="resource-description">Official Mozilla documentation. Free and comprehensive.</div>
+    </div>
+    <div class="resource-item">
+      <strong>FreeCodeCamp JavaScript Course</strong> - <a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a>
+      <div class="resource-description">4+ hour video tutorial. Beginner-friendly, well-structured.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Cypress Official Documentation</strong> - <a href="https://docs.cypress.io" target="_blank">cypress.io</a>
+      <div class="resource-description">Official docs with examples and best practices.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Playwright Official Documentation</strong> - <a href="https://playwright.dev" target="_blank">playwright.dev</a>
+      <div class="resource-description">Modern testing framework with excellent documentation.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title"><i class="fas fa-tools"></i> Development Tools & Platforms</h2>
+  <div class="resource-card">
+    <h3><i class="fas fa-wrench"></i> Essential Tools</h3>
+    <div class="resource-item">
+      <strong>GitHub</strong> - <a href="https://github.com" target="_blank">github.com</a>
+      <div class="resource-description">Your portfolio. Free hosting, version control, and collaboration tools.</div>
+    </div>
+    <div class="resource-item">
+      <strong>VS Code</strong> - <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a>
+      <div class="resource-description">Free editor with AI extensions (GitHub Copilot, etc.)</div>
+    </div>
+    <div class="resource-item">
+      <strong>ChatGPT</strong> - <a href="https://chat.openai.com" target="_blank">chat.openai.com</a>
+      <div class="resource-description">Your AI pair programmer. Free and paid tiers available.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Claude AI</strong> - <a href="https://claude.ai" target="_blank">claude.ai</a>
+      <div class="resource-description">Alternative AI assistant, great for coding and analysis.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Postman</strong> - <a href="https://www.postman.com" target="_blank">postman.com</a>
+      <div class="resource-description">API testing and development tool. Free tier is generous.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title"><i class="fas fa-network-wired"></i> Communities & Networking</h2>
+  <div class="resource-card">
+    <h3><i class="fas fa-people-group"></i> Join These Communities</h3>
+    <div class="resource-item">
+      <strong>QA/Testing LinkedIn Groups</strong>
+      <div class="resource-description">Network with QA professionals, see job postings, learn tips.</div>
+    </div>
+    <div class="resource-item">
+      <strong>AI/ML Communities</strong>
+      <div class="resource-description">Join r/MachineLearning on Reddit, AI Discord servers, HuggingFace forums.</div>
+    </div>
+    <div class="resource-item">
+      <strong>GitHub Discussions</strong>
+      <div class="resource-description">Engage with projects you use. Ask questions, contribute ideas.</div>
+    </div>
+    <div class="resource-item">
+      <strong>Stack Overflow</strong> - <a href="https://stackoverflow.com" target="_blank">stackoverflow.com</a>
+      <div class="resource-description">Answer questions to build reputation and learn by teaching.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title"><i class="fas fa-lightbulb"></i> Advanced / Optional</h2>
+  <div class="resource-card">
+    <h3><i class="fas fa-rocket"></i> Go Deeper (After Basics)</h3>
+    <div class="resource-item">
+      <strong>Machine Learning Specialization</strong> by Andrew Ng (Coursera)
+      <div class="resource-description">If you want to understand ML deeply (3 courses, ~4 months).</div>
+    </div>
+    <div class="resource-item">
+      <strong>Selenium Python Documentation</strong>
+      <div class="resource-description">Alternative test framework (if you choose Python over JavaScript).</div>
+    </div>
+    <div class="resource-item">
+      <strong>Docker & Kubernetes Basics</strong>
+      <div class="resource-description">Learn containerization for modern testing pipelines.</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <h3><i class="fas fa-star"></i> Learning Strategy</h3>
+    <p><strong>Don't try to learn everything at once!</strong> Here's a focused learning path:</p>
+    <ol>
+      <li>Week 1: Pick one AI introductory resource (AI for Everyone)</li>
+      <li>Week 2-3: JavaScript basics from MDN or FreeCodeCamp</li>
+      <li>Week 4-6: Pick one testing framework (Playwright or Cypress)</li>
+      <li>Week 7+: Build your first project while learning</li>
+    </ol>
+    <p><strong>Key Principle:</strong> Learn by building, not by watching. Start projects early!</p>
+  </div>
+
+  <footer>
+    <p><i class="fas fa-bookmark"></i> Bookmark this page. You'll come back when you need new resources!</p>
+  </footer>
+</main>
+
+<script>
+  function setTheme(theme) {
+    document.body.classList.remove('dark-theme', 'neon-theme', 'minimalist-theme');
+    if (theme !== 'light') {
+      document.body.classList.add(theme + '-theme');
+    }
+    localStorage.setItem('theme', theme);
+    updateThemeButtons(theme);
+  }
+
+  function updateThemeButtons(activeTheme) {
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      if ((activeTheme === 'light' && btn.innerHTML.includes('sun')) ||
+          (activeTheme === 'dark' && btn.innerHTML.includes('moon')) ||
+          (activeTheme === 'neon' && btn.innerHTML.includes('flash')) ||
+          (activeTheme === 'minimalist' && btn.innerHTML.includes('minimize'))) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+  });
+</script>
+
+</body>
+</html>
